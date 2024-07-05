@@ -45,22 +45,32 @@ package com.hym.leetcode;
  * nums is sorted in non-decreasing order.
  */
 
-public class RemoveDuplicatesfromSortedArray26 {
+public class RemoveDuplicatesFromSortedArray26 {
+
+//    public int removeDuplicates(int[] nums) {
+//        if (nums.length == 0) {return 0;}
+//        int i = 0;
+//        for (int j = 1; j< nums.length; j++) {
+//            if (nums[i] != nums[j]) {
+//                i++;
+//                nums[i] = nums[j];
+//            }
+//        }
+//        return i+1;
+//    }
 
     public int removeDuplicates(int[] nums) {
-        if (nums.length == 0) {return 0;}
-        int i = 0;
-        for (int j = 1; j< nums.length; j++) {
-            if (nums[i] < nums[j]) {
-                i++;
-                nums[i] = nums[j];
+        int cnt = 0;
+        for (int num : nums) {
+            if (nums[cnt] != num) {
+                nums[++cnt] = num;
             }
         }
-        return i+1;
+        return cnt+1;
     }
 
     public static void main(String[] args){
-        RemoveDuplicatesfromSortedArray26 r = new RemoveDuplicatesfromSortedArray26();
+        RemoveDuplicatesFromSortedArray26 r = new RemoveDuplicatesFromSortedArray26();
         int[] a = {1,1,2};
         int[] b = {0,0,1,1,1,2,2,3,3,4};
         System.out.println(r.removeDuplicates(a));
