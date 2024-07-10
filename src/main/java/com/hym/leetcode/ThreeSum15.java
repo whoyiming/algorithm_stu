@@ -1,5 +1,7 @@
 package com.hym.leetcode;
 
+import java.util.*;
+
 /**
  * Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
  *
@@ -29,4 +31,24 @@ package com.hym.leetcode;
  * Explanation: The only possible triplet sums up to 0.
  */
 public class ThreeSum15 {
+
+    public List<List<Integer>> threeSum(int[] nums) {
+        Arrays.sort(nums);
+        Set<List<Integer>> set = new HashSet<>();
+        for (int k = 0; k< nums.length - 2; k++) {
+            int i = k + 1;
+            int j = nums.length - 1;
+            while (i < j) {
+                if (nums[i] + nums[j] + nums[k] == 0) {
+                    set.add(Arrays.asList(nums[k],nums[i++],nums[j--]));
+                } else if (nums[i] + nums[j] + nums[k] > 0) {
+                    j--;
+                } else if (nums[i] + nums[j] + nums[k] <0) {
+                    i++;
+                }
+            }
+        }
+        return new ArrayList<>(set);
+    }
+
 }
