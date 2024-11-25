@@ -5,90 +5,83 @@ import java.util.Map;
 
 public class LRUCache146 {
 
-    private DLinkedNode head;
-    private DLinkedNode tail;
+    private DLinkeNode head;
+    private DLinkeNode tail;
     private int count;
     private int capacity;
-    private Map<Integer, DLinkedNode> cache = new HashMap<>();
+    private Map<Integer, DLinkeNode> cache;
 
     public LRUCache146(int capacity) {
-        this.head = new DLinkedNode();
-        this.tail = new DLinkedNode();
-        head.pre  = null;
-        tail.post = null;
-        head.post = tail;
-        tail.pre  = head;
-
         this.count = 0;
         this.capacity = capacity;
+        this.head = new DLinkeNode();
+        this.tail = new DLinkeNode();
+        head.pre  = null;
+        head.post = tail;
+        tail.pre  = head;
+        tail.post = null;
+        cache = new HashMap<>();
     }
 
     public int get(int key) {
-        DLinkedNode node = cache.get(key);
+        DLinkeNode node = cache.get(key);
         if (node == null) {
             return -1;
         }
-        this.moveToHead(node);
-        return node.value;
+        removeNode(node);
+        addNode(node);
+        return node.val;
     }
 
     public void put(int key, int value) {
-        DLinkedNode node = cache.get(key);
+        DLinkeNode node = cache.get(key);
         if (node == null) {
-            node = new DLinkedNode();
+            node = new DLinkeNode();
             node.key = key;
-            node.value = value;
-
+            node.val = value;
             cache.put(key, node);
-            this.addNode(node);
+            addNode(node);
             count++;
+
             if (count > capacity) {
-                DLinkedNode tail = popTail();
+                DLinkeNode tail = popTail();
                 cache.remove(tail.key);
                 count--;
             }
         } else {
-            node.value = value;
-            moveToHead(node);
+            node.val = value;
+            removeNode(node);
+            addNode(node);
         }
-
     }
 
-    // always add to head
-    private void addNode(DLinkedNode node){
-        node.post = head.post;
-        node.pre  = head;
-
+    private void addNode(DLinkeNode node){
         head.post.pre = node;
-        head.post = node;
+        node.post = head.post;
 
+        head.post = node;
+        node.pre  = head;
     }
 
-    private void removeNode(DLinkedNode node){
-        DLinkedNode pre = node.pre;
-        DLinkedNode post = node.post;
+    private void removeNode(DLinkeNode node){
+        DLinkeNode pre = node.pre;
+        DLinkeNode post = node.post;
 
         pre.post = post;
         post.pre = pre;
     }
 
-    private void moveToHead(DLinkedNode node){
-        this.removeNode(node);
-        this.addNode(node);
-    }
-
-    private DLinkedNode popTail(){
-        DLinkedNode res = tail.pre;
-        this.removeNode(res);
+    private DLinkeNode popTail(){
+        DLinkeNode res = tail.pre;
+        removeNode(res);
         return res;
     }
 
-    class DLinkedNode {
+    class DLinkeNode{
         int key;
-        int value;
-
-        DLinkedNode pre;
-        DLinkedNode post;
+        int val;
+        DLinkeNode pre;
+        DLinkeNode post;
     }
 
 }

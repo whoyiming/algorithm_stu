@@ -19,21 +19,27 @@ package com.hym.leetcode;
  *
  */
 public class RemoveLinkedListElements203 {
-    public static Node removeElements(Node head, int val) {
-        if (head == null) {return head;}
-
-        Node dummyNode = new Node();
-        Node node = dummyNode;
-        dummyNode.setNext(head);
-
-        while (dummyNode.getNext() != null) {
-            if (dummyNode.getNext().getEle().equals(val)) {
-                dummyNode.setNext(dummyNode.getNext().getNext());
+    public ListNode removeElements(ListNode head, int val) {
+        ListNode prev = new ListNode();
+        prev.next = head;
+        ListNode dumpyNode = prev;
+        while (head != null) {
+            if (head.val == val) {
+                prev.next = head.next;
+                head = head.next;
             } else {
-                dummyNode = dummyNode.getNext();
+                prev = head;
+                head = head.next;
             }
         }
+        return dumpyNode.next;
+    }
 
-        return node.getNext();
+    public static void main(String[] args){
+        ListNode node = new ListNode();
+        ListNode a = node;
+        node.val = 7;
+        RemoveLinkedListElements203 rd = new RemoveLinkedListElements203();
+        rd.removeElements(a, 7);
     }
 }

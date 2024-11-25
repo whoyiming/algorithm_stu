@@ -18,19 +18,19 @@ package com.hym.leetcode;
  */
 public class RemoveDuplicatesFromSortedList83 {
 
-    public static Node deleteDuplicates(Node head) {
-        if (head == null || head.getNext() == null) {return head;}
-        Node slow = head;
-        Node fast = slow.getNext();
-        while (fast != null) {
-            if (!slow.getEle().equals(fast.getEle())) {
-                slow.setNext(fast);
-                slow = slow.getNext();
-            }
-            fast = fast.getNext();
-        }
 
-        slow.setNext(null);
-        return head;
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode node = head;
+        while (head != null && head.next != null) {
+            ListNode next = head.next;
+            if (head.val == next.val) {
+                head.next = next.next;
+                next.next = null;
+            } else {
+                head = head.next;
+            }
+        }
+        return node;
     }
+
 }
