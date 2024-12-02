@@ -36,11 +36,16 @@ public class ThreeSum15 {
         Arrays.sort(nums);
         Set<List<Integer>> set = new HashSet<>();
         for (int k = 0; k< nums.length - 2; k++) {
+            // Skip duplicates
+            if (k > 0 && nums[k] == nums[k-1]) {continue;}
             int i = k + 1;
             int j = nums.length - 1;
             while (i < j) {
                 if (nums[i] + nums[j] + nums[k] == 0) {
                     set.add(Arrays.asList(nums[k],nums[i++],nums[j--]));
+                    // Skip duplicates
+                    while (i < j && nums[i] == nums[i-1]) {i++;}
+                    while (i < j && nums[j] == nums[j+1]) {j--;}
                 } else if (nums[i] + nums[j] + nums[k] > 0) {
                     j--;
                 } else if (nums[i] + nums[j] + nums[k] <0) {
