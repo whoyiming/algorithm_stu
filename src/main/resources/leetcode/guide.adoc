@@ -1,0 +1,222 @@
+= AsciiDoc Guide
+Author whoyiming <whoyiming@outlook.com>
+:doctype: book
+:source-highlighter: rouge
+:toc: left
+:toclevels: 2
+:sectnums:
+:sectid:
+:icons: font
+
+[preface]
+== 引言
+
+这是文档的引言部分，它介绍了文档的背景和目的。
+
+
+== 第一章：文档结构
+
+本章将介绍AsciiDoc文档的基本结构。
+
+=== 节标题
+
+在AsciiDoc中，节标题使用等号（`=`）来定义，每增加一个级别就增加一个等号。
+
+==== 小节标题
+
+小节标题使用两个等号（`==`）。
+
+===== 小小节标题
+
+小小节标题使用三个等号（`===`）。
+
+====== 小小小节标题
+
+小小小节标题使用四个等号（`====`）。
+
+== 第二章：语法元素
+
+=== 文本样式
+
+_斜体_ 表示斜体文本。
+
+**粗体** 表示粗体文本。
+
+**_粗斜体_** 表示粗斜体。
+
+`monospace` 表示等宽文本。
+
+上标^上标^
+
+下标~下标~
+
+=== 特殊符号
+
+版权(C)
+
+商标(TM)
+
+注册商标(R)
+
+破折号 -- ABC
+
+省略号 ... ABC
+
+右箭头->
+
+左箭头<-
+
+右双箭头<=
+
+左双箭头=>
+
+////
+comment block 只在adoc文件显示，可用于注释
+////
+
+++++
+通行文本块用于显示格式化的文本，<b>粗体文本</b> 和 <i>斜体文本</i>
+++++
+
+****
+这是侧边注释的内容。
+****
+
+....
+这是代码块
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+....
+
+====
+这是一个例子块。
+====
+
+____
+这是引用的内容。
+____
+
+或者使用
+
+[quote, 作者, 来源]
+____
+这是引用的内容。
+____
+
+[NOTE]
+注意事项
+
+[TIP]
+TIP
+
+[IMPORTANT]
+IMPORTANT
+
+[WARNING]
+WARNING
+
+[CAUTION]
+CAUTION
+
+=== 列表
+
+* 无序列表项
+* 另一个无序列表项
+
+. 有序列表项
+. 另一个有序列表项
+
+=== 代码块
+
+[source,ruby]
+puts "Hello, AsciiDoc!"
+
+[source,java]
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+
+=== 链接和图片
+
+链接到 http://example.com[Example Website]。
+
+image::images/logo.png[公司Logo]
+
+image:images/logo.png["Company Logo",height=32,link="",scaledwidth="75%",align="left"]
+
+=== 表格
+
+[%autowidth]
+|===
+| 表头1 | 表头2
+
+| 单元格1 | 单元格2
+| 单元格3 | 单元格4
+|===
+
+[width="50%",cols="^,2m",frame="topbot",options="header,footer"]
+|======================
+|Column 1 |Column 2
+|1 |Item 1
+|2 |Item 2
+|3 |Item 3
+|6 |Three items
+|======================
+
+=== 锚点和引用
+
+锚点：[A88]
+
+链接：<<A88>>
+
+[appendix]
+=== xxxx
+
+=== 脚注
+
+A footnote footnote:[An example footnote.]
+
+=== 专业术语列表
+
+[glossary]
+术语1:: 解释1.
+术语2:: 解释2.
+
+=== Q&A
+
+[qanda, caption="Frequently Asked Questions"]
+What is AsciiDoc?::
+AsciiDoc is a text document format for writing notes, documentation, articles, books, ebooks, slideshows and man pages in plain text.
+
+How do I install AsciiDoc?::
+You can install AsciiDoc from your Linux distribution's package manager or from the official AsciiDoc website.
+
+[qanda]
+How do I write a document in AsciiDoc?::
+Write your content using AsciiDoc syntax and save it with the `.adoc` extension.
+
+How do I convert AsciiDoc to HTML?::
+Use the `asciidoctor` command to convert your AsciiDoc file to HTML.
+
+== 第三章：结论
+
+这是文档的结论部分，它总结了文档的要点。
+
+
+[appendix]
+== 附录A：AsciiDoc高级技巧
+
+
+== 参考文献目录
+
+- [asciidoc_guide] Stuart Rackham. _AsciiDoc User Guide_.
+- [pdf_backend] Stuart Rackham. _AsciiDoc User Guide - 5.4. PDF generation_.
+
+[index]
+== 索引
+

@@ -1,0 +1,13 @@
+= LeetCode 笔记
+Author <whoyiming@outlook.com>
+:doctype: book
+:toc: left
+:toclevels: 2
+:sectnums:
+:sectid:
+:icons: font
+
+[preface]
+== 前言
+
+include::TwoSum.adoc[]
