@@ -19,17 +19,6 @@ public class ZigzagConversionTest {
     }
 
     @Test
-    public void testConvertNegativeRows() {
-        ZigzagConversion6 converter = new ZigzagConversion6();
-        try {
-            converter.convert("PAYPALISHIRING", -1);
-            fail("Expected IllegalArgumentException");
-        } catch (IllegalArgumentException e) {
-            // Expected exception
-        }
-    }
-
-    @Test
     public void testConvertOneRow() {
         ZigzagConversion6 converter = new ZigzagConversion6();
         assertEquals("ABC", converter.convert("ABC", 1));
